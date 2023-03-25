@@ -5,18 +5,27 @@ const app=express()
 require("dotenv").config()
 
 const cors=require("cors")
-const {connection,todoModel}=require("./database/connect")
+const {todoModel}=require("./database/connect")
+// const {connection}=require("./database/connect")
 const validator=require("./middleWare/validator")
 
 
-// const { MongoClient } = require('mongodb');
 
-// const uri = process.env.mongoUrl;
-// const client = new MongoClient(uri);
 
 
 app.use(express.json())
 app.use(cors())
+
+
+
+
+
+
+
+
+
+
+
 
 app.get("/todos",async(req,res)=>{
     const data = await todoModel.find()
@@ -67,25 +76,21 @@ app.get("/update/:id",async(req,res)=>{
 
 const PORT=process.env.PORT
 
-app.listen(PORT,async()=>{
-    try{
-        await connection
+app.listen(PORT,()=>{
+    // try{
+    //     await connection
         
-    }
-    catch(err)
-    {
-        console.group(err)
-    }
+    // }
+    // catch(err)
+    // {
+    //     console.group(err)
+    // }
     console.log(`server is runing on ${PORT}`)
 })
 
 
 
 
-// client.connect(err => {
-//     if(err){ console.error(err); return false;}
-//     // connection to mongo is successful, listen for requests
-//     app.listen(PORT, () => {
-//         console.log("listening for requests");
-//     })
-// });
+
+
+
