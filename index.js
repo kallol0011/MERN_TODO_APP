@@ -6,7 +6,7 @@ require("dotenv").config()
 
 const cors=require("cors")
 const {todoModel}=require("./database/connect")
-// const {connection}=require("./database/connect")
+const {connection}=require("./db")
 const validator=require("./middleWare/validator")
 
 
@@ -76,15 +76,15 @@ app.get("/update/:id",async(req,res)=>{
 
 const PORT=process.env.PORT
 
-app.listen(PORT,()=>{
-    // try{
-    //     await connection
+app.listen(PORT,async()=>{
+    try{
+        await connection
         
-    // }
-    // catch(err)
-    // {
-    //     console.group(err)
-    // }
+    }
+    catch(err)
+    {
+        console.group(err)
+    }
     console.log(`server is runing on ${PORT}`)
 })
 
