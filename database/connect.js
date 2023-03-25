@@ -2,12 +2,12 @@
 const mongoose=require ("mongoose")
 require("dotenv").config()
 
-const connection = mongoose.connect(process.env.mongoUrl)
+const connection = mongoose.connect(process.env.MONGO_URL)
 
 
 
 
-3
+
 
 const todosschema=mongoose.Schema({
     task:{
